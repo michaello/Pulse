@@ -4,7 +4,7 @@
 
 import SwiftUI
 import Pulse
-import Charts
+// import Charts
 
 @available(iOS 16, tvOS 16, macOS 13, watchOS 9, visionOS 1, *)
 package struct LoggerStoreSizeChart: View {
@@ -41,31 +41,32 @@ package struct LoggerStoreSizeChart: View {
     }
 
     private var chart: some View {
-        Chart(data) {
-            BarMark(x: .value("Data Size", $0.bytes), stacking: .normalized)
-                .foregroundStyle(by: .value("Category", $0.category))
-        }
-        .chartForegroundStyleScale([
-            Category.messages: .blue,
-            Category.responses: .green,
-            Category.free: .secondaryFill
-        ])
-        .chartPlotStyle { $0.cornerRadius(8) }
-#if os(tvOS)
-        .frame(height: 100)
-#elseif os(watchOS)
-        .frame(height: 52)
-#else
-        .frame(height: 60)
-#endif
+        EmptyView()
+//         Chart(data) {
+//             BarMark(x: .value("Data Size", $0.bytes), stacking: .normalized)
+//                 .foregroundStyle(by: .value("Category", $0.category))
+//         }
+//         .chartForegroundStyleScale([
+//             Category.messages: .blue,
+//             Category.responses: .green,
+//             Category.free: .secondaryFill
+//         ])
+//         .chartPlotStyle { $0.cornerRadius(8) }
+// #if os(tvOS)
+//         .frame(height: 100)
+// #elseif os(watchOS)
+//         .frame(height: 52)
+// #else
+//         .frame(height: 60)
+// #endif
     }
 
-    private var data: [Series] {
-        [Series(category: .messages, bytes: info.totalStoreSize - info.blobsSize),
-         Series(category: .responses, bytes: info.blobsSize),
-         sizeLimit.map { Series(category: .free, bytes: max(0, $0 - info.totalStoreSize)) }]
-            .compactMap { $0 }
-    }
+    // private var data: [Series] {
+    //     [Series(category: .messages, bytes: info.totalStoreSize - info.blobsSize),
+    //      Series(category: .responses, bytes: info.blobsSize),
+    //      sizeLimit.map { Series(category: .free, bytes: max(0, $0 - info.totalStoreSize)) }]
+    //         .compactMap { $0 }
+    // }
 }
 
 @available(iOS 16, tvOS 16, macOS 13, watchOS 9.0, visionOS 1, *)
