@@ -69,19 +69,19 @@ package struct LoggerStoreSizeChart: View {
     // }
 }
 
-@available(iOS 16, tvOS 16, macOS 13, watchOS 9.0, visionOS 1, *)
-private enum Category: String, Hashable, Plottable {
-    case messages = "Logs"
-    case responses = "Blobs"
-    case free = "Free"
-}
+// @available(iOS 16, tvOS 16, macOS 13, watchOS 9.0, visionOS 1, *)
+// private enum Category: String, Hashable, Plottable {
+//     case messages = "Logs"
+//     case responses = "Blobs"
+//     case free = "Free"
+// }
 
-@available(iOS 16, tvOS 16, macOS 13, watchOS 9.0, visionOS 1, *)
-private struct Series: Identifiable {
-    let category: Category
-    let bytes: Int64
-    var id: Category { category }
-}
+// @available(iOS 16, tvOS 16, macOS 13, watchOS 9.0, visionOS 1, *)
+// private struct Series: Identifiable {
+//     let category: Category
+//     let bytes: Int64
+//     var id: Category { category }
+// }
 
 #if DEBUG
 //@available(iOS 16, tvOS 16, macOS 13, watchOS 9.0, visionOS 1, *)
